@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.scrollable {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+  &:hover {
+    &.dark {
+      scrollbar-color: rgba($colour-old-grey-light, 0.3) transparent;
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba($colour-old-grey-light, 0.3);
+        mix-blend-mode: difference;
+      }
+    }
+    scrollbar-color: rgba($colour-grey-dark-2, 0.3) transparent;
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($colour-grey-dark-2, 0.3);
+      mix-blend-mode: difference;
+    }
+  }
+  transition: scrollbar-color 0.25s ease-in-out;
+  &::-webkit-scrollbar {
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 0.25rem;
+    transition: background-color 0.25s ease-in-out; // Unfortunately this doesn't work
+
+    &:vertical {
+      min-height: 2rem;
+    }
+  }
+  // Chrome leaves a gap in the bottom right corner when you have both horizintal and vertical scrolling.
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
